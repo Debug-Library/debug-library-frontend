@@ -30,51 +30,79 @@ export function Cadastro() {
   };
 
   return (
-    <div className="bg-purple-950 min-h-screen flex items-center justify-center px-4">
+    <div className="bg-purple-950 min-h-screen flex flex-col items-center justify-center px-4">
+      <div className="flex justify-center mb-8 mt-10">
+        <img 
+          src="/src/assets/Logotipo-Debug-Library.png" 
+          className="w-70 h-auto" 
+          alt="Logotipo Debug Library" 
+        />
+      </div>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-purple-800 w-full sm:max-w-sm md:max-w-md lg:max-w-lg p-6 sm:p-8 rounded-md shadow-md"
+        className="bg-purple-800 w-full sm:max-w-sm md:max-w-md lg:max-w-lg p-6 sm:p-8 rounded-md shadow-md mt-5"
       >
-        <h1 className="font-montserrat text-white text-2xl sm:text-3xl text-center mb-6">Cadastro</h1>
+        <h1 className="font-montserrat text-white text-2xl sm:text-3xl text-center mb-6">
+          Cadastro
+        </h1>
 
         <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium text-white">E-mail</label>
+          <label className="block mb-1 text-sm font-medium text-white">
+            E-mail
+          </label>
           <input
             type="email"
             {...register("email")}
             className="w-full bg-gray-100 text-black px-3 py-2 rounded outline-none"
           />
-          {errors.email && <p className="text-red-200 text-sm mt-1">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-white text-sm mt-1">{errors.email.message}</p>
+          )}
         </div>
 
         <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium text-white">Apelido</label>
+          <label className="block mb-1 text-sm font-medium text-white">
+            Apelido
+          </label>
           <input
             type="text"
             {...register("apelido")}
             className="w-full bg-gray-100 text-black px-3 py-2 rounded outline-none"
           />
-          {errors.apelido && <p className="text-red-200 text-sm mt-1">{errors.apelido.message}</p>}
+          {errors.apelido && (
+            <p className="text-white text-sm mt-1">{errors.apelido.message}</p>
+          )}
         </div>
 
         <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium text-white">Senha</label>
+          <label className="block mb-1 text-sm font-medium text-white">
+            Senha
+          </label>
           <input
             type="password"
             {...register("password")}
             className="w-full bg-gray-100 text-black px-3 py-2 rounded outline-none"
           />
-          {errors.password && <p className="text-red-200 text-sm mt-1">{errors.password.message}</p>}
+          {errors.password && (
+            <p className="text-white text-sm mt-1">{errors.password.message}</p>
+          )}
         </div>
 
         <div className="mb-6">
-          <label className="block mb-1 text-sm font-medium text-white">Confirmar Senha</label>
+          <label className="block mb-1 text-sm font-medium text-white">
+            Confirmar Senha
+          </label>
           <input
             type="password"
             {...register("confirmarSenha")}
             className="w-full bg-gray-100 text-black px-3 py-2 rounded outline-none"
           />
-          {errors.confirmarSenha && <p className="text-red-200 text-sm mt-1">{errors.confirmarSenha.message}</p>}
+          {errors.confirmarSenha && (
+            <p className="text-white text-sm mt-1">
+              {errors.confirmarSenha.message}
+            </p>
+          )}
         </div>
 
         <button
