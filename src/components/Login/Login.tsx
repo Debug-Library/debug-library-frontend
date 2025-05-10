@@ -26,7 +26,13 @@ export const Login = () => {
     <div className="bg-purple-950 min-h-screen flex items-center justify-center">
       <section className="font-montserrat bg-purple-800 w-full max-w-md p-8 rounded-xl shadow-xl mx-4 sm:mx-8">
         <h2 className="font-montserrat text-4xl text-white text-center mb-6">Login</h2>
-
+        <div className="fixed top-0 left-0 right-0 flex justify-center items-start h-[100px]">
+              <img 
+                src="/src/assets/Logotipo-Debug-Library.png" 
+                className="w-70 h-auto py-20" 
+                alt="Logotipo Debug Library" 
+              />
+            </div>
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
