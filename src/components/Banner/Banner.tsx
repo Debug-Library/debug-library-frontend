@@ -1,6 +1,6 @@
 export function Banner() {
     return (
-        <div className="w-full h-auto flex justify-center items-center fixed top-0 z-50 bg-transparent">
+        <div className="w-full h-96 bg-cover bg-center">
             <a href="#">
                 <img
                     className="w-full object-contain
