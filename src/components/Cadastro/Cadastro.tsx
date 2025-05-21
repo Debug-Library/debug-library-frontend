@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link, useNavigate } from "react-router-dom";
 
 const cadastroSchema = z
   .object({
@@ -17,26 +19,45 @@ const cadastroSchema = z
 type CadastroFormData = z.infer<typeof cadastroSchema>;
 
 export function Cadastro() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<CadastroFormData>({
     resolver: zodResolver(cadastroSchema),
   });
 
+  // Dados fake com senha >= 8 caracteres e confirmarSenha preenchido
+  const fakeUser = {
+    email: "mariadefatima@email.com",
+    apelido: "alvesmariadefatima",
+    password: "123456",
+    confirmarSenha: "123456",
+  };
+
+  // Preenche o formulário automaticamente quando o componente monta
+  useEffect(() => {
+    reset(fakeUser);
+  }, [reset]);
+
   const onSubmit = (data: CadastroFormData) => {
     console.log("Dados cadastrados:", data);
+    navigate("/login");
   };
 
   return (
     <div className="bg-purple-950 min-h-screen flex flex-col items-center justify-center px-4">
       <div className="flex justify-center mb-8 mt-10">
-        <img 
-          src="/src/assets/Logotipo-Debug-Library.png" 
-          className="w-70 h-auto" 
-          alt="Logotipo Debug Library" 
-        />
+        <Link to="/">
+          <img 
+            src="/src/assets/Logotipo-Debug-Library.png" 
+            className="w-70 h-auto" 
+            alt="Logotipo Debug Library" 
+          />
+        </Link>
       </div>
 
       <form
