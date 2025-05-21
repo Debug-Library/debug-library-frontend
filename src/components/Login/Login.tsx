@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const loginSchema = z.object({
   email: z.string().min(1, "O e-mail é obrigatório").email("E-mail inválido"),
@@ -19,18 +19,35 @@ export const Login = () => {
     resolver: zodResolver(loginSchema),
   });
 
+  const navigate = useNavigate();
+
   const onSubmit = (data: LoginFormData) => {
-    console.log("Dados enviados:", data);
+    const fakeUser = {
+      email: "mariadefatima@email.com",
+      password: "12345678",
+      name: "Maria de Fátima",
+      avatar: "https://avatars.githubusercontent.com/u/94319702?v=4",
+    };
+
+    if (data.email === fakeUser.email && data.password === fakeUser.password) {
+      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("userName", fakeUser.name);
+      localStorage.setItem("userAvatar", fakeUser.avatar);
+
+      navigate("/perfil");
+    }
   };
 
   return (
     <div className="bg-purple-950 min-h-screen flex items-center justify-center">
       <div className="fixed top-0 left-0 right-0 flex justify-center items-start h-[100px]">
-        <img 
-          src="/src/assets/Logotipo-Debug-Library.png" 
-          className="w-70 h-auto py-20" 
-          alt="Logotipo Debug Library" 
-        />
+        <Link to="/">
+            <img 
+              src="/src/assets/Logotipo-Debug-Library.png" 
+              className="w-70 h-auto py-20" 
+              alt="Logotipo Debug Library" 
+            />
+        </Link>
       </div>
       <section className="font-montserrat bg-purple-800 w-full max-w-md p-8 rounded-xl shadow-xl mx-4 sm:mx-8">
         <h2 className="font-montserrat text-4xl text-white text-center mb-6">Login</h2>
@@ -43,7 +60,6 @@ export const Login = () => {
               className="w-full p-3 rounded-md bg-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
               {...register("email")}
             />
-              
             {errors.email && (
               <p className="text-white text-sm mt-1">{errors.email.message}</p>
             )}
