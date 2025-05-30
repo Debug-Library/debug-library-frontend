@@ -23,6 +23,8 @@ O projeto foi desenvolvido com as seguintes tecnologias modernas:
 - **Express** – Framework web leve e flexível para o Node.js  
 - **PostgreSQL** – Banco de dados relacional robusto e de alta performance
 
+### Protótipo do Projeto no Figma
+
 ### Tela Inicial
 
 ![Tela Inicial](src/assets/homepage.png)
