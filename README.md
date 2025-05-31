@@ -31,7 +31,9 @@ O projeto foi desenvolvido com as seguintes tecnologias modernas:
 
 ### Tela de Login
 
-![Tela de Login](src/assets/tela-login.png)
+<p align="center">
+  <img src="src/assets/tela-login.png" alt="Tela de Login" />
+</p>
 
 ### Tela de Cadastro
 
