@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FaHeart, FaPlus } from 'react-icons/fa';
 
-// Componente Modal Reutilizável
 const Modal = ({
   message,
   onClose,
@@ -15,7 +14,7 @@ const Modal = ({
 
   return (
     <div
-      className="fixed inset-0 flex justify-center items-center z-50"
+      className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50"
       onClick={handleClose}
     >
       <div
@@ -25,7 +24,7 @@ const Modal = ({
         <p className="text-lg">{message}</p>
         <button
           onClick={handleClose}
-          className="mt-6 px-6 py-2 rounded bg-[#9D4EDD] text-white cursor-pointer"
+          className="mt-6 px-6 py-2 bg-[#9D4EDD] cursor-pointer text-white rounded"
         >
           Fechar
         </button>
@@ -56,39 +55,43 @@ const BookActionsButtons = () => {
     setShowLivrosModal(true);
   };
 
+  const heartsCount = 5;
+
   return (
-    <div className="flex items-center">
-      <div className="flex gap-2 items-center">
-        {[1, 2, 3, 4, 5].map((index) => (
+    <div className="flex items-center space-x-4">
+      {/* Corações para avaliação */}
+      {[...Array(heartsCount)].map((_, index) => {
+        const heartIndex = index + 1;
+        return (
           <FaHeart
-            key={index}
-            className={`text-3xl cursor-pointer transition-colors ${
-              index <= rating ? 'text-white' : 'text-gray-400'
+            key={heartIndex}
+            onClick={() => handleRating(heartIndex)}
+            className={`text-2xl cursor-pointer transition-colors ${
+              heartIndex <= rating ? 'text-purple-500' : 'text-gray-300'
             }`}
-            onClick={() => handleRating(index)}
           />
-        ))}
+        );
+      })}
 
-        {/* Botão Favoritar */}
-        <button
-          aria-label="Favoritar"
-          onClick={handleFavoritar}
-          title="Favoritar"
-          className="ml-4 w-10 h-10 flex items-center justify-center rounded-full bg-[#9D4EDD] text-white cursor-pointer border-none"
-        >
-          <FaHeart className="text-lg" />
-        </button>
+      {/* Botão Favoritar */}
+      <button
+        aria-label="Favoritar"
+        onClick={handleFavoritar}
+        title="Favoritar"
+        className="w-10 h-10 flex items-center justify-center rounded-full bg-[#9D4EDD] text-white cursor-pointer border-none"
+      >
+        <FaHeart className="text-lg" />
+      </button>
 
-        {/* Botão Adicionar Livro */}
-        <button
-          aria-label="Adicionar Livro"
-          onClick={handleAdicionarLivro}
-          title="Adicionar Livro"
-          className="ml-4 w-10 h-10 flex items-center justify-center rounded-full bg-[#9D4EDD] text-white cursor-pointer border-none"
-        >
-          <FaPlus className="text-lg" />
-        </button>
-      </div>
+      {/* Botão Adicionar Livro */}
+      <button
+        aria-label="Adicionar Livro"
+        onClick={handleAdicionarLivro}
+        title="Adicionar Livro"
+        className="w-10 h-10 flex items-center justify-center rounded-full bg-[#9D4EDD] text-white cursor-pointer border-none"
+      >
+        <FaPlus className="text-lg" />
+      </button>
 
       {/* Modal Favoritos */}
       {showFavoritosModal && (
@@ -109,4 +112,4 @@ const BookActionsButtons = () => {
   );
 };
 
-export default BtnAvaliacaoLivros;
+export default BookActionButtons;
