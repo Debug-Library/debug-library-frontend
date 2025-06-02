@@ -1,54 +1,78 @@
-# React + TypeScript + Vite
+# 📚 Debug Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Debug Library** é uma plataforma de avaliação e recomendação de livros de computação, abrangendo desde o nível iniciante até o avançado. O objetivo é oferecer aos usuários uma curadoria colaborativa de livros técnicos, com avaliações detalhadas, resenhas e categorização por nível de conhecimento.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📖 Catálogo de livros de computação categorizados por nível (iniciante, intermediário, avançado)
+- ⭐ Sistema de avaliações e resenhas feito pelos usuários
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+O projeto foi desenvolvido com as seguintes tecnologias modernas:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Frontend
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **React** – Biblioteca para construção de interfaces modernas e reativas  
+- **TypeScript** – Tipagem estática para JavaScript, trazendo mais segurança ao código  
+- **Tailwind CSS** – Framework utilitário para estilização rápida e responsiva  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Backend
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **Node.js** – Plataforma para execução de JavaScript no servidor  
+- **Express** – Framework web leve e flexível para o Node.js  
+- **PostgreSQL** – Banco de dados relacional robusto e de alta performance
+
+### Protótipo do Projeto no Figma
+
+### Tela Inicial
+
+![Tela Inicial](src/assets/homepage.png)
+
+### Tela de Login
+
+<p align="center">
+  <img src="src/assets/tela-login.png" alt="Tela de Login" />
+</p>
+
+### Tela de Cadastro
+
+![Tela de Cadastro](src/assets/tela-cadastro.png)
+
+### Tela de Informações do Perfil
+
+![Tela de Informações do Perfil](src/assets/tela-informacoes-perfil.png)
+
+
+### Tela de Informações do Livro (v1)
+
+![Tela de Informações do Livro](src/assets/tela-informacoes-livro-v1.png)
+
+### Modal Informações do Livro (v2)
+
+![Modal Informações do Livro](src/assets/modal-informacoes-livro-v2.png)
+
+## 👥 Integrantes
+
+| Nome                   | Função              |
+|------------------------|---------------------|
+| Alice Lavínia Honorato de Cerqueira Vasconcelos | Frontend Developer 👩‍💻  |
+| Gabriel Clementino Clementino Ávila | Frontend Developer 👨‍💻   |
+| Guilherme Gonzaga | Backend Developer 👨‍💻        |
+| Ivanildo Marques de Souza Filho | UI/UX Designer 🎨      |
+| Maria de Fátima Nunes Alves | Frontend Developer & Tech Lead 👩‍💻  |
+
+## 📌 Como Executar o Projeto
+
+### Pré-requisitos
+
+- Node.js (v18+)
+- PostgreSQL
+- Yarn ou npm
+
+### Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/debug-library.git
+cd debug-library

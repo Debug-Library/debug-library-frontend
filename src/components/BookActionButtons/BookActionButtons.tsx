@@ -33,7 +33,7 @@ const Modal = ({
   );
 };
 
-const BookActionButtons = () => {
+const BookActionsButtons = () => {
   const [rating, setRating] = useState(() => {
     const saved = localStorage.getItem('bookRating');
     return saved ? parseInt(saved) : 0;
