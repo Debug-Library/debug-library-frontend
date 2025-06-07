@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Banner from "../Banner/Banner";
 import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/footer";
 
 export function Home() {
   const [user, setUser] = useState({
@@ -17,6 +18,7 @@ export function Home() {
     <div className="bg-purple-950 min-h-screen">
       <Navbar user={user} onLogout={handleLogout} />
       <Banner />
+      <Footer />
     </div>
   );
 }
