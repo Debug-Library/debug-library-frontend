@@ -1,4 +1,5 @@
 import { FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -7,11 +8,13 @@ const Footer = () => {
         
         {/* Logo e nome */}
         <div className="flex justify-center md:justify-start items-center">
-          <img 
-            src="src/assets/Logotipo-Debug-Library.png"
-            alt="Logotipo Debug Library"
-            className="w-40 h-auto"
-          />
+          <Link to="/">
+            <img 
+              src="src/assets/Logotipo-Debug-Library.png"
+              alt="Logotipo Debug Library"
+              className="w-40 h-auto"
+            />
+          </Link>
         </div>
 
         {/* Navegação */}
