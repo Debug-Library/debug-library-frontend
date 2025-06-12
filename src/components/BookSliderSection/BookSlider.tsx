@@ -22,13 +22,6 @@ const BookSlider: React.FC<BookSliderProps> = ({ title, books }) => {
   const canGoBack = start > 0;
   const canGoForward = start + VISIBLE_CARDS < books.length;
 
-  const adicionarFavorito = (book: Book) => {
-    setFavoritos((prev) => {
-      if (prev.find((b) => b.title === book.title)) return prev;
-      return [...prev, book];
-    });
-  };
-
   const handlePrev = () => canGoBack && setStart(start - 1);
   const handleNext = () => canGoForward && setStart(start + 1);
 
@@ -48,12 +41,11 @@ const BookSlider: React.FC<BookSliderProps> = ({ title, books }) => {
     <div className="w-full">
       <h2 className="text-white font-bold mb-4 text-lg md:text-1.8xl">{title}</h2>
 
-      {/* Modal do livro com botão de favoritar */}
+      {/* Modal do livro */}
       <BookModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         book={selectedBook}
-        onAddFavorite={adicionarFavorito}
       />
 
       {/* Mobile: scroll horizontal */}

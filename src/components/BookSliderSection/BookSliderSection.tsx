@@ -1,6 +1,5 @@
 import BookSlider from "../BookSliderSection/BookSlider";
 
-
 const books = {
   iniciante: [
     { 
@@ -19,7 +18,8 @@ const books = {
       description: "Conceitos fundamentais de lógica com exemplos em JS."
     },
     { 
-      title: "Introdução à Programação com Linguagem C", image: "src/assets/livros_imgs/inciante/introducao_a_programacao_c.png",
+      title: "Introdução à Programação com Linguagem C", 
+      image: "src/assets/livros_imgs/inciante/introducao_a_programacao_c.png",
       description: "Base sólida em programação estruturada com C."
     },
     { 
@@ -38,7 +38,6 @@ const books = {
       title: "Design Patterns",
       image: "src/assets/livros_imgs/intermediario/domain_driven_design.png",
       description: "Soluções reutilizáveis para problemas recorrentes de design." 
-
     },
     { 
       title: "Trabalho Eficaz com Código Legado", 
@@ -49,7 +48,7 @@ const books = {
       title: "Programação Web com Node & Express",
       image: "src/assets/livros_imgs/intermediario/programacao_web_node_express.png",
       description: "Crie aplicações web robustas com Node.js e Express."
-      },
+    },
     { 
       title: "Programação Utilizando IA", 
       image: "src/assets/livros_imgs/intermediario/programacao_utilizando_ia.jpg",
@@ -71,7 +70,7 @@ const books = {
       title: "Padrões de Projeto",
       image: "src/assets/livros_imgs/avancado/padroes_de_projeto.png",
       description: "Catálogo clássico de padrões de design em software." 
-      },
+    },
     { 
       title: "Código Limpo", 
       image: "src/assets/livros_imgs/avancado/codigo_limpo.png",
@@ -93,23 +92,21 @@ const books = {
       description: "Princípios para manter a estrutura e escalabilidade do código." 
     },
     { 
-      title: "Arquitetura de Software: As Partes Difíceis", image: "src/assets/livros_imgs/avancado/arquitetura_software_as_partes_dificieis.jpg",
+      title: "Arquitetura de Software: As Partes Difíceis", 
+      image: "src/assets/livros_imgs/avancado/arquitetura_software_as_partes_dificieis.jpg",
       description: "Exploração profunda dos desafios de arquitetura moderna." 
     }
   ],
 };
 
-const BookSliderSection: React.FC<BookSliderSectionProps> = ({ onAddFavorite }) => (
+const BookSliderSection: React.FC = () => (
   <section className="bg-[#2d203a] py-4 px-1 sm:px-4 md:px-8 rounded-none sm:rounded-xl md:rounded-2xl flex flex-col items-center justify-center p-8">
     <div className="w-full sm:max-w-7xl sm:mx-auto space-y-6 sm:space-y-10 md:space-y-14 flex flex-col items-center">
-      <BookSlider title="INICIANTE" books={books.iniciante} onAddFavorite={onAddFavorite} />
-      <BookSlider title="INTERMEDIÁRIO" books={books.intermediario} onAddFavorite={onAddFavorite} />
-      <BookSlider title="AVANÇADO" books={books.avancado} onAddFavorite={onAddFavorite} />
+      <BookSlider title="INICIANTE" books={books.iniciante} />
+      <BookSlider title="INTERMEDIÁRIO" books={books.intermediario} />
+      <BookSlider title="AVANÇADO" books={books.avancado} />
     </div> 
   </section>
 );
 
 export default BookSliderSection;
-
-
-
