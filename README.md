@@ -52,7 +52,7 @@ O projeto foi desenvolvido com as seguintes tecnologias modernas:
 |------------------------|---------------------|
 | Alice Lavínia Honorato de Cerqueira Vasconcelos | Frontend Developer 👩‍💻  |
 | Gabriel Clementino Clementino Ávila | Frontend Developer 👨‍💻   |
-| Guilherme Gonzaga | Backend Developer 👨‍💻        |
+| Guilherme Gonzaga | UI/UX Designer 🎨        |
 | Ivanildo Marques de Souza Filho | UI/UX Designer 🎨      |
 | Maria de Fátima Nunes Alves | Frontend Developer & Tech Lead 👩‍💻  |
 
