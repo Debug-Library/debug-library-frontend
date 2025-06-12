@@ -2,7 +2,7 @@ import { useState } from "react";
 import Banner from "../Banner/Banner";
 import Navbar from "../Navbar/Navbar";
 import BookSliderSection from "../BookSliderSection/BookSliderSection"
-
+import Footer from "../Footer/Footer";
 
 export function Home() {
   const [user, setUser] = useState({
@@ -20,12 +20,19 @@ export function Home() {
       <Navbar user={user} onLogout={handleLogout} />      
       <BookSliderSection/>
       <Banner />
+    <div className="flex flex-col min-h-screen bg-purple-950">
+      {/* Cabeçalho */}
+      <Navbar user={user} onLogout={handleLogout} />
+
+      {/* Conteúdo principal (cresce para empurrar o footer) */}
+      <main className="flex-grow">
+        <Banner />
+      </main>
+
+      {/* Rodapé fixado no fim da página */}
+      <Footer />
     </div>
   );
 }
 
 export default Home;
-
-
-
-
