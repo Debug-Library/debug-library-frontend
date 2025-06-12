@@ -1,29 +1,45 @@
+import React from "react";
 import BookActionButtons from "../BookActionButtons/BookActionButtons";
 
-const BookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  if (!isOpen) return null;
+type Book = {
+  title: string;
+  image: string;
+  description?: string;
+  rating?: string;
+};
+
+type BookModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  book: Book | null;
+  onAddFavorite: (book: Book) => void;  // nova prop
+};
+
+const BookModal: React.FC<BookModalProps> = ({ isOpen, onClose, book, onAddFavorite }) => {
+  if (!isOpen || !book) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-xl shadow-lg p-6 max-w-2xl w-full flex gap-4 border-2 border-blue-200">
-        
         <img
-          src="https://m.media-amazon.com/images/I/81RXMnEXrdL._AC_UF1000,1000_QL80_.jpg"
-          alt="Livro sobre Padrões de Projeto"
+          src={book.image}
+          alt={book.title}
           className="w-32 h-48 object-cover rounded shadow-2xl border border-gray-200"
         />
 
         <div className="flex-1 flex flex-col">
-          <h1 className="text-2xl font-mono text-gray-800 mb-2">Debug Library</h1>
+          <h1 className="text-2xl font-mono text-gray-800 mb-2">{book.title}</h1>
 
           <p className="text-gray-700 text-sm mb-2">
-            O pequeno príncipe é um clássico da literatura infantil que narra a amizade entre um menino e um piloto de avião.
-            O principezinho vem do asteroide B 612, e encontra o piloto no deserto do Saara. A obra fala de amor, amizade e sobre a sabedoria infantil.
+            {book.description ||
+              "Descrição indisponível. Clique para saber mais sobre este livro."}
           </p>
 
-          <p className="text-sm text-gray-600 mb-2">Avaliada 1.7K de usuários</p>
+          <p className="text-sm text-gray-600 mb-2">
+            Avaliação: {book.rating || "não avaliado"}
+          </p>
 
-          <BookActionButtons />
+          <BookActionButtons onAddFavorite={() => onAddFavorite(book)} />
 
           <div className="mt-6 flex justify-start">
             <button
