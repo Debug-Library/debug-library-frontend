@@ -4,14 +4,14 @@ import BookSliderSection from "../BookSliderSection/BookSliderSection";
 import Footer from "../Footer/Footer";
 
 export function Home() {
-  const [user, setUser] = useState({
-    name: "Maria de Fátima",
-    avatar: "https://avatars.githubusercontent.com/u/94319702?v=4",
-  });
+const [user] = useState<{ name: string; avatar: string } | null>({
+  name: "Maria de Fátima",
+  avatar: "https://avatars.githubusercontent.com/u/94319702?v=4",
+});
 
-  const handleLogout = () => {
-    setUser(null);
-  };
+  function handleLogout(): void {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-purple-950 text-white">
