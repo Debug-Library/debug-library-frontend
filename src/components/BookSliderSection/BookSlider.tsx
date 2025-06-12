@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import BookModal from "../BookModal/BookModal"; // ajuste o caminho conforme necessário
 
 type Book = {
   title: string;
   image: string;
+  description?: string;
+  rating?: string;
 };
 
 type BookSliderProps = {
@@ -10,20 +13,35 @@ type BookSliderProps = {
   books: Book[];
 };
 
-const VISIBLE_CARDS = 5; // para telas médias+
+const VISIBLE_CARDS = 5;
 
 const BookSlider: React.FC<BookSliderProps> = ({ title, books }) => {
   const [start, setStart] = useState(0);
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [favoritos, setFavoritos] = useState<Book[]>([]); // lista de favoritos
 
   const canGoBack = start > 0;
   const canGoForward = start + VISIBLE_CARDS < books.length;
 
-  const handlePrev = () => {
-    if (canGoBack) setStart(start - 1);
+  const adicionarFavorito = (book: Book) => {
+    setFavoritos((prev) => {
+      if (prev.find((b) => b.title === book.title)) return prev;
+      return [...prev, book];
+    });
   };
 
-  const handleNext = () => {
-    if (canGoForward) setStart(start + 1);
+  const handlePrev = () => canGoBack && setStart(start - 1);
+  const handleNext = () => canGoForward && setStart(start + 1);
+
+  const handleBookClick = (book: Book) => {
+    setSelectedBook(book);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedBook(null);
+    setIsModalOpen(false);
   };
 
   const visibleBooks = books.slice(start, start + VISIBLE_CARDS);
@@ -31,12 +49,22 @@ const BookSlider: React.FC<BookSliderProps> = ({ title, books }) => {
   return (
     <div className="w-full">
       <h2 className="text-white font-bold mb-4 text-lg md:text-1.8xl">{title}</h2>
+
+      {/* Modal do livro com botão de favoritar */}
+      <BookModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        book={selectedBook}
+        onAddFavorite={adicionarFavorito}
+      />
+
       {/* Mobile: scroll horizontal */}
       <div className="flex sm:hidden overflow-x-auto gap-2 pb-2 w-full">
         {books.map((book) => (
           <div
             key={book.title}
-            className="w-32 h-48 flex-shrink-0 rounded-lg shadow-xl bg-white overflow-hidden"
+            onClick={() => handleBookClick(book)}
+            className="w-32 h-48 flex-shrink-0 rounded-lg shadow-xl bg-white overflow-hidden cursor-pointer"
           >
             <img
               src={book.image}
@@ -46,6 +74,7 @@ const BookSlider: React.FC<BookSliderProps> = ({ title, books }) => {
           </div>
         ))}
       </div>
+
       {/* Desktop/tablet: carrossel com botões */}
       <div className="hidden sm:flex items-center gap-2 justify-center w-full">
         <button
@@ -61,7 +90,8 @@ const BookSlider: React.FC<BookSliderProps> = ({ title, books }) => {
             return book ? (
               <div
                 key={book.title}
-                className="w-32 h-48 rounded-lg shadow-xl bg-white overflow-hidden flex-shrink-0"
+                onClick={() => handleBookClick(book)}
+                className="w-32 h-48 rounded-lg shadow-xl bg-white overflow-hidden flex-shrink-0 cursor-pointer"
               >
                 <img
                   src={book.image}
