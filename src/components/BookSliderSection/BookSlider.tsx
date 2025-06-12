@@ -19,8 +19,6 @@ const BookSlider: React.FC<BookSliderProps> = ({ title, books }) => {
   const [start, setStart] = useState(0);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [favoritos, setFavoritos] = useState<Book[]>([]); // lista de favoritos
-
   const canGoBack = start > 0;
   const canGoForward = start + VISIBLE_CARDS < books.length;
 
