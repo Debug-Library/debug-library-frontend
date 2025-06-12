@@ -37,14 +37,25 @@ O projeto foi desenvolvido com as seguintes tecnologias modernas:
 
 ![Tela de Informações do Perfil](src/assets/tela-informacoes-perfil.png)
 
+## Telas Finais Desenvolvidas
 
-### Tela de Informações do Livro (v1)
+## Versão Final - Home
+![Tela Final Home](src/assets/tela-home-versao-final.png)
 
-![Tela de Informações do Livro](src/assets/tela-informacoes-livro-v1.png)
+## Versão Final - Login
+![Tela Final Login](src/assets/tela-final-login.png)
 
-### Modal Informações do Livro (v2)
+## Versão Final - Cadastro
+![Tela Final Cadastro](src/assets/tela-final-cadastro.png)
 
-![Modal Informações do Livro](src/assets/modal-informacoes-livro-v2.png)
+## Versão Final - Footer
+![Tela Final Footer](src/assets/versao-final-footer.png)
+
+## Versão Final - Modal Livro
+![Tela Final Modal Livro](src/assets/modal-livro-versao-final.png)
+
+## Versão Final - Tela Usuário Logado
+![Tela Final Informações Usuário](src/assets/tela-final-informacoes-usuário.png)
 
 ## 👥 Integrantes
 
