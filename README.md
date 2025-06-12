@@ -15,13 +15,7 @@ O projeto foi desenvolvido com as seguintes tecnologias modernas:
 
 - **React** – Biblioteca para construção de interfaces modernas e reativas  
 - **TypeScript** – Tipagem estática para JavaScript, trazendo mais segurança ao código  
-- **Tailwind CSS** – Framework utilitário para estilização rápida e responsiva  
-
-### Backend
-
-- **Node.js** – Plataforma para execução de JavaScript no servidor  
-- **Express** – Framework web leve e flexível para o Node.js  
-- **PostgreSQL** – Banco de dados relacional robusto e de alta performance
+- **Tailwind CSS** – Framework utilitário para estilização rápida e responsiva    
 
 ### Protótipo do Projeto no Figma
 
@@ -67,7 +61,6 @@ O projeto foi desenvolvido com as seguintes tecnologias modernas:
 ### Pré-requisitos
 
 - Node.js (v18+)
-- PostgreSQL
 - Yarn ou npm
 
 ### Instalação
