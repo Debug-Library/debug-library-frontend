@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { FaHeart, FaPlus } from 'react-icons/fa';
 
-const Modal = ({
-  message,
-  onClose,
-}: {
+type ModalProps = {
   message: string;
   onClose: () => void;
-}) => {
+};
+
+const Modal: React.FC<ModalProps> = ({ message, onClose }) => {
   const handleClose = () => {
     onClose();
   };
@@ -33,7 +32,11 @@ const Modal = ({
   );
 };
 
-const BookActionButtons = () => {
+type BookActionButtonsProps = {
+  onAddFavorite?: () => void;
+};
+
+const BookActionButtons: React.FC<BookActionButtonsProps> = ({ onAddFavorite }) => {
   const [rating, setRating] = useState(() => {
     const saved = localStorage.getItem('bookRating');
     return saved ? parseInt(saved) : 0;
@@ -42,20 +45,21 @@ const BookActionButtons = () => {
   const [showFavoritosModal, setShowFavoritosModal] = useState(false);
   const [showLivrosModal, setShowLivrosModal] = useState(false);
 
+  const heartsCount = 5;
+
   const handleRating = (value: number) => {
     setRating(value);
     localStorage.setItem('bookRating', value.toString());
   };
 
   const handleFavoritar = () => {
+    if (onAddFavorite) onAddFavorite();
     setShowFavoritosModal(true);
   };
 
   const handleAdicionarLivro = () => {
     setShowLivrosModal(true);
   };
-
-  const heartsCount = 5;
 
   return (
     <div className="flex items-center space-x-4">
