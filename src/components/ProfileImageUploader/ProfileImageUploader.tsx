@@ -1,10 +1,26 @@
+import React from "react";
 import { Camera } from "lucide-react";
 
-const ProfileImageUploader: React.FC = () => {
-  const profileImageUrl = "https://avatars.githubusercontent.com/u/94319702?v=4";
+type ProfileImageUploaderProps = {
+  initialImage: string;
+  onImageChange: (newImage: string) => void;
+};
 
+const ProfileImageUploader: React.FC<ProfileImageUploaderProps> = ({
+  initialImage,
+  onImageChange,
+}) => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // lógica para trocar a imagem se quiser
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (typeof reader.result === "string") {
+        onImageChange(reader.result); // passa o novo base64 pro estado do pai
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -14,7 +30,7 @@ const ProfileImageUploader: React.FC = () => {
         style={{ minWidth: 176, minHeight: 176 }}
       >
         <img
-          src={profileImageUrl}
+          src={initialImage}
           alt="Foto de perfil"
           className="w-full h-full object-cover relative"
           style={{ zIndex: 0, position: "relative" }}
