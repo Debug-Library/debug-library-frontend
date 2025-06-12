@@ -33,8 +33,11 @@ export const Login = () => {
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("userName", fakeUser.name);
       localStorage.setItem("userAvatar", fakeUser.avatar);
-
+      
+      alert("Login efetuado com sucesso!")
       navigate("/perfil");
+    } else {
+      alert("E-mail e/ou senha inválidos. Tente novamente")
     }
   };
 

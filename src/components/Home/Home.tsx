@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Banner from "../Banner/Banner";
 import Navbar from "../Navbar/Navbar";
+import BookSliderSection from "../BookSliderSection/BookSliderSection"
 import Footer from "../Footer/Footer";
 
 export function Home() {
@@ -15,6 +16,10 @@ export function Home() {
   };
 
   return (
+    <div className="bg-purple-950 min-h-screen">
+      <Navbar user={user} onLogout={handleLogout} />      
+      <BookSliderSection/>
+      <Banner />
     <div className="flex flex-col min-h-screen bg-purple-950">
       {/* Cabeçalho */}
       <Navbar user={user} onLogout={handleLogout} />
