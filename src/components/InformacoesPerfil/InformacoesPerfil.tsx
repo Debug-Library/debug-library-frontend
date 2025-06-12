@@ -13,12 +13,6 @@ const InformacoesPerfil = () => {
     localStorage.getItem("fotoPerfil") || "https://via.placeholder.com/150"
   );
 
-  // Estado para armazenar livros favoritos
-  const [favoritos, setFavoritos] = useState<Book[]>(() => {
-    const stored = localStorage.getItem("favoritos");
-    return stored ? JSON.parse(stored) : [];
-  });
-
   useEffect(() => {
     localStorage.setItem("fotoPerfil", fotoPerfil);
   }, [fotoPerfil]);
