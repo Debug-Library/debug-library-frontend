@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Banner from "../Banner/Banner";
 import Navbar from "../Navbar/Navbar";
+import BookSliderSection from "../BookSliderSection/BookSliderSection";
 import Footer from "../Footer/Footer";
 
 export function Home() {
@@ -21,6 +22,7 @@ export function Home() {
 
       {/* Conteúdo principal (cresce para empurrar o footer) */}
       <main className="flex-grow">
+        <BookSliderSection />
         <Banner />
       </main>
 
