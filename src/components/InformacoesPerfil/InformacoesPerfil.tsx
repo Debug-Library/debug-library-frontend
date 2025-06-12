@@ -3,14 +3,6 @@ import ProfileImageUploader from "../ProfileImageUploader/ProfileImageUploader";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import BookSliderSection from "../BookSliderSection/BookSliderSection";
-import BookSlider from "../BookSliderSection/BookSlider";
-
-type Book = {
-  title: string;
-  image: string;
-  description?: string;
-  rating?: string;
-};
 
 const InformacoesPerfil = () => {
   const nomePerfil = "Maria de Fátima Nunes Alves";
@@ -21,27 +13,11 @@ const InformacoesPerfil = () => {
     return stored && stored !== "" ? stored : "https://avatars.githubusercontent.com/u/94319702?v=4";
   });
 
-  const [favoritos, setFavoritos] = useState<Book[]>(() => {
-    const stored = localStorage.getItem("favoritos");
-    return stored ? JSON.parse(stored) : [];
-  });
-
   useEffect(() => {
     if (fotoPerfil && fotoPerfil !== "") {
       localStorage.setItem("fotoPerfil", fotoPerfil);
     }
   }, [fotoPerfil]);
-
-  useEffect(() => {
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
-  }, [favoritos]);
-
-  const adicionarFavorito = (book: Book) => {
-    setFavoritos((prev) => {
-      if (prev.find((b) => b.title === book.title)) return prev;
-      return [...prev, book];
-    });
-  };
 
   return (
     <div className="flex flex-col min-h-screen bg-[#2d203a] text-white">
@@ -72,14 +48,7 @@ const InformacoesPerfil = () => {
           <h1 className="text-3xl font-bold text-center">MINHAS LISTAS</h1>
         </div>
 
-        <BookSliderSection onAddFavorite={adicionarFavorito} />
-
-        {favoritos.length > 0 && (
-          <div className="mt-20 flex flex-col items-center">
-            <h2 className="text-3xl font-bold mb-6">Meus Favoritos</h2>
-            <BookSlider title="FAVORITOS" books={favoritos} />
-          </div>
-        )}
+        <BookSliderSection />
       </main>
 
       <Footer />
