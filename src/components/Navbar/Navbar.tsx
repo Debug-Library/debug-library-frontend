@@ -1,33 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+type NavbarProps = {
+  user: { name: string; avatar: string } | null;
+  onLogout: () => void;
+};
+
+const Navbar: React.FC<NavbarProps> = ({ user, onLogout }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState({ name: "", avatar: "" });
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const authStatus = localStorage.getItem("isAuthenticated") === "true";
-    const name = localStorage.getItem("userName") || "";
-    const avatar = localStorage.getItem("userAvatar") || "";
-
-    setIsAuthenticated(authStatus);
-    if (authStatus) {
-      setUser({ name, avatar });
-    }
-  }, []);
-
+  const isAuthenticated = !!user;
   const toggleMenu = () => setMenuOpen(!menuOpen);
-
-  const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userAvatar");
-    navigate("/login");
-  };
 
   const linkStyle =
     "text-white font-bold hover:text-purple-200 transition-colors duration-300";
@@ -72,16 +55,16 @@ const Navbar = () => {
           {isAuthenticated ? (
             <div className="flex items-center space-x-4">
               <img
-                src={user.avatar}
-                alt={`Foto de perfil de ${user.name}`}
+                src={user!.avatar}
+                alt={`Foto de perfil de ${user!.name}`}
                 className="w-10 h-10 rounded-full border-2 border-white"
               />
               <div className="text-white font-semibold">
                 <p>Bem-vinda,</p>
-                <p>{user.name}</p>
+                <p>{user!.name}</p>
               </div>
               <button
-                onClick={handleLogout}
+                onClick={onLogout}
                 className="bg-white text-purple-700 font-semibold px-4 py-1 rounded-md hover:bg-purple-100 transition-all duration-300"
               >
                 Sair
@@ -129,17 +112,17 @@ const Navbar = () => {
             <div className="flex flex-col space-y-3">
               <div className="flex items-center space-x-3">
                 <img
-                  src={user.avatar}
-                  alt={`Foto de perfil de ${user.name}`}
+                  src={user!.avatar}
+                  alt={`Foto de perfil de ${user!.name}`}
                   className="w-10 h-10 rounded-full border-2 border-white"
                 />
                 <div className="text-white font-semibold">
                   <p>Bem-vinda,</p>
-                  <p>{user.name}</p>
+                  <p>{user!.name}</p>
                 </div>
               </div>
               <button
-                onClick={handleLogout}
+                onClick={onLogout}
                 className="bg-white text-purple-700 font-semibold px-4 py-1 rounded-md hover:bg-purple-100 w-full transition-all duration-300"
               >
                 Sair

@@ -21,7 +21,9 @@ const InformacoesPerfil = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#2d203a] text-white">
-      <Navbar />
+      <Navbar user={null} onLogout={function (): void {
+        throw new Error("Function not implemented.");
+      } } />
 
       <main className="flex-grow">
         <div className="pt-24 px-4 sm:px-6 md:px-10 grid grid-cols-1 md:grid-cols-[150px_1fr] gap-8 items-center">

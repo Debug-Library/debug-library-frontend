@@ -12,10 +12,9 @@ type BookModalProps = {
   isOpen: boolean;
   onClose: () => void;
   book: Book | null;
-  onAddFavorite: (book: Book) => void;  // nova prop
 };
 
-const BookModal: React.FC<BookModalProps> = ({ isOpen, onClose, book, onAddFavorite }) => {
+const BookModal: React.FC<BookModalProps> = ({ isOpen, onClose, book }) => {
   if (!isOpen || !book) return null;
 
   return (
@@ -39,7 +38,7 @@ const BookModal: React.FC<BookModalProps> = ({ isOpen, onClose, book, onAddFavor
             Avaliação: {book.rating || "não avaliado"}
           </p>
 
-          <BookActionButtons onAddFavorite={() => onAddFavorite(book)} />
+          <BookActionButtons />
 
           <div className="mt-6 flex justify-start">
             <button
